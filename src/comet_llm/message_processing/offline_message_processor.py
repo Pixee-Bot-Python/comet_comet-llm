@@ -15,13 +15,13 @@
 import logging
 import os
 import pathlib
-import random
 import threading
 import time
 from typing import Optional
 
 from . import messages
 from .offline_senders import chain, prompt
+import secrets
 
 LOGGER = logging.getLogger(__name__)
 
@@ -61,5 +61,5 @@ class OfflineMessageProcessor:
         ):
             self._current_file_started_at = current_time
             self._current_file_name = (
-                f"messages_{current_time}_{random.randint(1111,9999)}.jsonl"
+                f"messages_{current_time}_{secrets.SystemRandom().randint(1111,9999)}.jsonl"
             )
